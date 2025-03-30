@@ -3,7 +3,7 @@ import sys
 from pygame import Surface, Rect
 from pygame.font import Font
 import pygame
-from code.Const import COLOR_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
+from code.Const import COLOR_CYAN, COLOR_GREEN, COLOR_WHITE, EVENT_ENEMY, MENU_OPTION, SPAWN_TIME, WIN_HEIGHT
 from code.Enemy import Enemy
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -37,6 +37,11 @@ class Level:
                     shoot = ent.shoot()
                     if shoot is not None:
                         self.entity_list.append(shoot)
+                if ent.name == 'Player1':
+                    self.level_text(text_size=14, text=f'Player1 - Health: : {ent.health} | Score: {ent.score}', text_color=COLOR_GREEN, text_pos=(10, 25))
+                if ent.name == 'Player2':
+                    self.level_text(text_size=14, text=f'Player1 - Health: : {ent.health} | Score: {ent.score}', text_color=COLOR_CYAN, text_pos=(10, 45))
+
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
